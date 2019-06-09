@@ -1,0 +1,44 @@
+#+STARTUP: showall align
+#+OPTIONS: todo:nil tasks:("IN-PROGRESS" "DONE") tags:nil
+#+AUTHOR: Manoel Vilela, Gerônimo Aguiar, Matheus Frota \\ Rayon Nunes, Pedro Renoir, Samuel Hericles
+#+TITLE: Inteligência Computacional @@latex:\\@@ Support Vector Machine
+#+EXCLUDE_TAGS: TOC_3
+#+LANGUAGE: bt-br
+#+LATEX_CLASS: report
+#+LATEX_HEADER: \usepackage[]{babel}
+#+LATEX_HEADER: \usepackage{indentfirst}
+#+LATEX_HEADER: \renewcommand\listingscaption{Código}
+#+OPTIONS: toc:nil
+[[./pics/ufc.png]]
+
+
+
+#+BEGIN_abstract
+
+Este documento sumariza o estudo sobre o algoritmo de aprendizagem de
+máquina Support Vector Machine (SVM), estudado na disciplina de
+Inteligência Computacional na UFC de Sobral no semestre de 2019.1,
+ministrada pelo professor Jarbas Joaci de Mesquita Sá Junior.
+
+#+END_abstract
+#+TOC: headlines=2
+
+* História
+* O que é SVM
+** Fundamentação Teórica
+** Classificação
+*** Kernel Linear
+*** Kernel Polinomial
+*** Kernel Radial Base Function (RBF)
+** Regressão
+** Análise crítica
+
+Prós:
++ Lida bem com problemas de multi-classe com muitas classes
+Contras:
++ Alta complexidade computacional: tempo alto de treinamento.
+
+* Aplicações
+* Implementação
+* Comparação
+* Referências
