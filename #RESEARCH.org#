@@ -31,37 +31,56 @@ lineares pela a aplicação do kernel trick pela margem máxima de hiperplanos.
 O padrão atual (margem branda) foi proposta por Corina Cortes e Vapnik em
 1993 e publicada em 1995.
 + Linha do tempo:
-  -Aizerman, Braverman e Rozonoer (1964) introduziram a interpretação geométrica dos grãos como produtos internos em um espaço característico.
+ - Aizerman, Braverman e Rozonoer (1964) introduziram a interpretação
+   geométrica dos grãos como produtos internos em um espaço
+   característico.
 
-Vapnik e Chervonenkis (1964) desenvolvem ainda mais o algoritmo de retrato generalizado.
+ - Vapnik e Chervonenkis (1964) desenvolvem ainda mais o algoritmo
+   de retrato generalizado.
 
-Cover (1965) discutiu hiperplanos de grande margem no espaço de entrada e também dispersão.
+ - Cover (1965) discutiu hiperplanos de grande margem no espaço de
+   entrada e também dispersão.
 
-Técnicas similares de otimização foram usadas no reconhecimento de padrões por Mangasarian (1965).
+ - Técnicas similares de otimização foram usadas no reconhecimento de
+   padrões por Mangasarian (1965).
 
-O uso de variáveis ​​de folga para superar o problema de ruído e não paridade foi introduzido por Smith (1968).
+ - O uso de variáveis de folga para superar o problema de ruído e não
+   paridade foi introduzido por Smith (1968).
 
-Duda e Hart (1973) discutem hiperplanos de grande margem no espaço de entrada.
+ - Duda e Hart (1973) discutem hiperplanos de grande margem no espaço de
+   entrada.
 
-O campo da "teoria da aprendizagem estatística" começou com Vapnik e Chervonenkis (1974) (em russo).
+ - O campo da "teoria da aprendizagem estatística" começou com Vapnik e
+   Chervonenkis (1974) (em russo).
 
-Pode-se dizer que as SVMs começaram quando a teoria da aprendizagem estatística foi desenvolvida com Vapnik (1979) (em russo).
+ - Pode-se dizer que as SVMs começaram quando a teoria da aprendizagem
+   estatística foi desenvolvida com Vapnik (1979) (em russo).
 
-Wapnik e Tscherwonenkis (1979) escreveram uma tradução alemã do livro de Vapnik e Chervonenkis de 1974.
+ - Wapnik e Tscherwonenkis (1979) escreveram uma tradução alemã do livro
+   de Vapnik e Chervonenkis de 1974.
 
-Vapnik (1982) escreveu uma tradução em inglês de seu livro de 1979.
+ - Vapnik (1982) escreveu uma tradução em inglês de seu livro de 1979.
 
-Veja também a tese de doutorado de Hassoun (1986) para trabalhos iniciais relacionados.
+ - Veja também a tese de doutorado de Hassoun (1986) para trabalhos
+   iniciais relacionados.
 
-Vários trabalhos de mecânica estatística (por exemplo, Anlauf e Biehl (1989)) sugeriram o uso de hiperplanos de grande margem no espaço de entrada.
+ - Vários trabalhos de mecânica estatística (por exemplo, Anlauf e
+   Biehl (1989)) sugeriram o uso de hiperplanos de grande margem no
+   espaço de entrada.
 
-Poggio e Girosi (1990) e Wahba (1990) discutem o uso de grãos.
+ - Poggio e Girosi (1990) e Wahba (1990) discutem o uso de grãos.
 
-Bennett e Mangasarian (1992) melhoraram o trabalho de Smith em 1968 sobre variáveis ​​de folga.
+- Bennett e Mangasarian (1992) melhoraram o trabalho de Smith em 1968
+  sobre variáveis ​​de folga.
 
-Os SVMs próximos de sua forma atual foram introduzidos pela primeira vez com um artigo na conferência COLT 1992 (Boser, Guyon e Vapnik, 1992).
+- Os SVMs próximos de sua forma atual foram introduzidos pela primeira
+  vez com um artigo na conferência COLT 1992 (Boser, Guyon e Vapnik,
+  1992).
 
-Em 1995, o classificador de margem branda foi introduzido por Cortes e Vapnik (1995); no mesmo ano o algoritmo foi estendido para o caso de regressão de Vapnik (1995) em The Nature of Statistical Learning Theory.
+- Em 1995, o classificador de margem branda foi introduzido por Cortes
+  e Vapnik (1995); no mesmo ano o algoritmo foi estendido para o caso
+  de regressão de Vapnik (1995) em The Nature of Statistical Learning
+  Theory.
 
 - Os trabalhos de Bartlett (1998) e Shawe-Taylor et al. (1998) deu o primeiro rigor estatístico ligado à generalização 
   de SVMs de margem rígida.

@@ -1,0 +1,96 @@
+% Created 2019-06-09 Dom 22:26
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[brazilian]{babel}
+\usepackage{indentfirst}
+\renewcommand\listingscaption{Código}
+\author{Manoel Vilela, Gerônimo Aguiar, Matheus Frota \\ Rayon Nunes, Pedro Renoir, Samuel Hericles}
+\date{\today}
+\title{Inteligência Computacional \\ Support Vector Machine}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\includegraphics[width=.9\linewidth]{./pics/ufc.png}
+
+
+
+\begin{abstract}
+
+
+Este documento sumariza o estudo sobre o algoritmo de aprendizagem de
+máquina Support Vector Machine (SVM), estudado na disciplina de
+Inteligência Computacional na UFC de Sobral no semestre de 2019.1,
+ministrada pelo professor Jarbas Joaci de Mesquita Sá Junior.
+\end{abstract}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\part{História}
+\label{sec-1}
+  Inicialmente, o SVM foi inventado por Vladimir N. Vapnink e Alexey Ya.
+Chervonenkis em 1963. Em 1992, Bernhard E.Boserm Isabelle M. Guyon e
+Vladimir N. Vapnik sugeriram um forma de criar classificadores não 
+lineares pela a aplicação do kernel trick pela margem máxima de hiperplanos.
+O padrão atual (margem branda) foi proposta por Corina Cortes e Vapnik em
+1993 e publicada em 1995.
+\begin{itemize}
+\item Linha do tempo:
+\begin{itemize}
+\item 
+\end{itemize}
+\end{itemize}
+\part{O que é SVM}
+\label{sec-2}
+\chapter{Fundamentação Teórica}
+\label{sec-2-1}
+\chapter{Classificação}
+\label{sec-2-2}
+\section{Kernel Linear}
+\label{sec-2-2-1}
+\section{Kernel Polinomial}
+\label{sec-2-2-2}
+\section{Kernel Radial Base Function (RBF)}
+\label{sec-2-2-3}
+\chapter{Regressão}
+\label{sec-2-3}
+\chapter{Análise crítica}
+\label{sec-2-4}
+
+Prós:
+\begin{itemize}
+\item Lida bem com problemas de multi-classe com muitas classes
+\end{itemize}
+Contras:
+\begin{itemize}
+\item Alta complexidade computacional: tempo alto de treinamento.
+\end{itemize}
+
+\part{Aplicações}
+\label{sec-3}
+\part{Implementação}
+\label{sec-4}
+\part{Comparação}
+\label{sec-5}
+\part{Referências}
+\label{sec-6}
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}
