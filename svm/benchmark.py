@@ -1,25 +1,16 @@
 # coding: utf-8
 
 import pandas as pd
-import numpy as np
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
 import matplotlib.pyplot as plt
-from io import StringIO
-import urllib.request as request
 
-
-def download_mnist():
-    # Abrindo dataset MNIST
-    # REF: "https://datahub.io/machine-learning/optdigits#readme"
-    mnist_ref = "http://ufc.lerax.me/datasets/mnist.csv"
-    print("[load] mnist dataset from {}".format(mnist_ref))
-    return StringIO(request.urlopen(mnist_ref).read().decode('utf-8'))
+import dataset
 
 
 def main():
-    mnist = download_mnist()
+    mnist = dataset.mnist()
     df = pd.read_csv(mnist)
     # Separando atributos X e Y
     X = df.drop("class",axis = 1)
@@ -33,7 +24,8 @@ def main():
     # Testando modelos já implementados em bibliotecas SVM e MLP
     models = []
     models.append(('MLP', MLPClassifier()))
-    models.append(('SVM', SVC(kernel="poly", gamma='scale')))
+    models.append(('PolySVM', SVC(kernel="poly", gamma='scale')))
+    models.append(('LinearSVM', SVC(kernel="linear", gamma='scale')))
 
     # Variáveis auxiliares
     results = []
@@ -49,6 +41,7 @@ def main():
         names.append(name)
         msg = "{}: {} ({})".format(name, cv_results.mean(), cv_results.std())
         print(msg)
+
     # Construção gráfica da box, contendo o comparativo entre os aloritimos
     fig = plt.figure()
     fig.suptitle('Comparação dos algoritimos')
