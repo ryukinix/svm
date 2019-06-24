@@ -9,8 +9,7 @@
 #
 
 
-"""
-Módulo com algoritmos de teste e métricas de avaliação.
+"""-- Módulo com algoritmos de teste e métricas de avaliação.
 
 Para classificação:
 + accuracy
@@ -30,11 +29,13 @@ na forma (X, y).
 import numpy as np
 from processing import concat
 
+
 def accuracy(y_test, y_pred):
     """Calcula métrica de acurácia para classificação."""
     n = len(y_test)
     corrects = sum([bool(y1 == y2) for y1, y2 in zip(y_test, y_pred)])
     return corrects/n
+
 
 def r2(y_test, y_pred):
     """Computa o coeficiente de ajuste de curva r² para regressão."""
@@ -46,6 +47,7 @@ def r2(y_test, y_pred):
     r2 = 1 - r
 
     return r2
+
 
 def hold_out(X, y, test_size=0.30):
     """Esquema de particionamento de dados train/test split.
@@ -106,6 +108,7 @@ def kfold(X, y, k=5):
         folds.append(fold)
 
     return folds
+
 
 def leave_one_out(X, y):
     """Estratégia de split train/test leave_one_out.

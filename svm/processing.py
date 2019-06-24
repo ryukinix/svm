@@ -8,7 +8,7 @@
 #      @email: manoel_vilela@engineer.com
 #
 
-"""Módulo de processamento auxiliar genérico
+"""-- Módulo de processamento auxiliar genérico
 
 + Operação com matrizes
 + Codificação de classes
@@ -20,6 +20,7 @@
 import numpy as np
 
 SEED = 32
+
 
 def sigmoid(x):
     """Função de ativação sigmoid"""

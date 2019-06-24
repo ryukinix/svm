@@ -18,8 +18,8 @@ Pontos aleatórios do treinamento são assumidos como centróides da camada ocul
 
 
 import numpy as np
-from matplotlib import pyplot as plt
 import processing
+from sklearn import base
 import testing
 
 Q = 10
@@ -60,7 +60,6 @@ def train(X, y, q=Q, activation=None):
     n, p = X.shape
     index = np.arange(0, n - 1)
     D = y
-
 
     # Adicionar bias
     X = processing.add_bias(X)
@@ -106,9 +105,9 @@ def predict(X, T, G, activation=None):
     return Y.T
 
 
-class NNRBF(object):
+class NNRBF(base.BaseEstimator):
 
-    def __init__(self, q=10, activation=processing.sigmoid):
+    def __init__(self, q=Q, activation=processing.sigmoid):
         self.activation = activation
         self.q = q
         self.T = None
@@ -116,7 +115,6 @@ class NNRBF(object):
 
     def fit(self, X, y):
         self.T, self.G = train(X, y, q=self.q, activation=self.activation)
-
 
     def predict(self, X):
         y_pred = predict(X, self.W, self.M, activation=self.activation)

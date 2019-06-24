@@ -8,7 +8,7 @@
 #      @email: manoel_vilela@engineer.com
 #
 
-"""Extreme Learning Machine
+"""-- Extreme Learning Machine
 
 Um algoritmo baseado em redes neurais e mínimos quadrados.
 Os pesos são aleatórios com uma distribuição normal.
@@ -28,9 +28,8 @@ q = 20 -> 0.97 acc (sorte do cassete)
 
 
 import numpy as np
-from matplotlib import pyplot as plt
 import processing
-from sklearn.base import ClassifierMixin
+from sklearn import base
 import testing
 
 
@@ -93,7 +92,7 @@ def predict(X, W, M, activation=None):
     return Y.T
 
 
-class ELM(ClassifierMixin):
+class ELM(base.BaseEstimator):
 
     def __init__(self, q=10, activation=processing.sigmoid):
         self.activation = activation
