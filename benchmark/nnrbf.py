@@ -73,11 +73,10 @@ def train(X, y, q=Q, activation=None):
     if activation is not None:
         PHI = activation(PHI)
     PHI = processing.add_bias(PHI, axis=1)
+
     # Calcular pesos G para camada de saída (aprendizado)
-    # Utiliza-se mínimos quadrados
-    # FIXME: G = D @ (PHI.T @ (np.linalg.inv(PHI @ PHI.T)))
-    # Singular Matrix! Usando mínimos quadrados optimizados do Numpy
-    G, *_ = np.linalg.lstsq(PHI, D)
+    # G = D @ (PHI.T @ (np.linalg.inv(PHI @ PHI.T)))
+    G, *_ = np.linalg.lstsq(PHI, D, rcond=None)
 
     return T, G.T
 
@@ -107,20 +106,38 @@ def predict(X, T, G, activation=None):
 
 class NNRBF(base.BaseEstimator):
 
-    def __init__(self, q=Q, activation=processing.sigmoid):
+    def __init__(self, q=Q, activation=processing.sigmoid, one_hot_y=True):
         self.activation = activation
         self.q = q
         self.T = None
         self.G = None
+        self.one_hot_y = one_hot_y
 
     def fit(self, X, y):
+        if self.one_hot_y:
+            y = processing.one_hot_encoding(y)
         self.T, self.G = train(X, y, q=self.q, activation=self.activation)
+        return self
 
     def predict(self, X):
-        y_pred = predict(X, self.W, self.M, activation=self.activation)
-        return processing.encode_label(y_pred)
+        y_pred = predict(X, self.T, self.G, activation=self.activation)
+        encoded = processing.encode_label(y_pred).astype(int)
+        return encoded
 
     def score(self, X, y):
-        y_encoded = processing.encode_label(y)
-        y_pred = processing.encode_label(y_encoded)
-        return testing.accuracy(y, y_pred)
+        y_pred = self.predict(X)
+        y_encoded = processing.encode_label(y_pred)
+        return testing.accuracy(y, y_encoded)
+
+
+def main():
+    import dataset
+    X, y = dataset.digits()
+    X_train, X_test, y_train, y_test = testing.hold_out(X, y)
+    clf = NNRBF(q=1000)
+    clf.fit(X_train, y_train)
+    print(clf.score(X_test, y_test))
+
+
+if __name__ == '__main__':
+    main()

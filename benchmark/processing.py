@@ -48,6 +48,8 @@ def encode_label(X):
     [0, 0, 1] -> 2
     [1, 0, 0] -> 0
     """
+    if len(X.shape) <= 1:
+        return X
     n = len(X)
     labels = np.empty(n)
     for i, x in enumerate(X):
@@ -73,3 +75,9 @@ def concat(X, y):
         y = y.reshape(n, 1)
 
     return np.concatenate([X, y], axis=1)
+
+
+def one_hot_encoding(values):
+    n = len(values)
+    p = np.max(values) + 1
+    return np.eye(p)[values].astype(int).reshape((n, p))
