@@ -32,8 +32,9 @@ import processing
 from sklearn import base
 import testing
 
+Q = 10
 
-def train(X, y, q=10, activation=None):
+def train(X, y, q=Q, activation=None):
     """Algoritmo de treinamento para ELM (Extreme Learning Machine)
 
     Parâmetros
@@ -63,10 +64,10 @@ def train(X, y, q=10, activation=None):
         Z = activation(Z)
     Z = processing.add_bias(Z, axis=0)
     # Calcular pesos M para camada de saída (aprendizado)
-    # Utiliza-se mínimos quadrados
-    M = D @ (Z.T @ (np.linalg.inv(Z @ Z.T)))
+    # M = D @ (Z.T @ (np.linalg.inv(Z @ Z.T)))
+    M, *_ = np.linalg.lstsq(Z.T, D.T, rcond=None)
 
-    return W, M
+    return W, M.T
 
 
 def predict(X, W, M, activation=None):
@@ -94,20 +95,38 @@ def predict(X, W, M, activation=None):
 
 class ELM(base.BaseEstimator):
 
-    def __init__(self, q=10, activation=processing.sigmoid):
+    def __init__(self, q=Q, activation=processing.sigmoid, one_hot_y=True):
         self.activation = activation
         self.q = q
         self.W = None
         self.M = None
+        self.one_hot_y = one_hot_y
 
     def fit(self, X, y):
+        if self.one_hot_y:
+            y = processing.one_hot_encoding(y)
         self.W, self.M = train(X, y, q=self.q, activation=self.activation)
+        return self
 
     def predict(self, X):
         y_pred = predict(X, self.W, self.M, activation=self.activation)
-        return processing.encode_label(y_pred)
+        encoded = processing.encode_label(y_pred).astype(int)
+        return encoded
 
     def score(self, X, y):
-        y_encoded = processing.encode_label(y)
-        y_pred = processing.encode_label(y_encoded)
-        return testing.accuracy(y, y_pred)
+        y_pred = self.predict(X)
+        y_encoded = processing.encode_label(y_pred)
+        return testing.accuracy(y, y_encoded)
+
+
+def main():
+    import dataset
+    X, y = dataset.digits()
+    X_train, X_test, y_train, y_test = testing.hold_out(X, y)
+    clf = ELM(q=100)
+    clf.fit(X_train, y_train)
+    print(clf.score(X_test, y_test))
+
+
+if __name__ == '__main__':
+    main()
