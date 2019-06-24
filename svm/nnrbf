@@ -100,11 +100,10 @@ def predict(X, T, G, activation=None):
     PHI = phi(X, T)
     if activation is not None:
         PHI = activation(PHI)
-    qPHI = processing.add_bias(PHI, axis=1)
+    PHI = processing.add_bias(PHI, axis=1)
     Y = G @ PHI.T
 
     return Y.T
-
 
 
 class NNRBF(object):
@@ -122,3 +121,8 @@ class NNRBF(object):
     def predict(self, X):
         y_pred = predict(X, self.W, self.M, activation=self.activation)
         return processing.encode_label(y_pred)
+
+    def score(self, X, y):
+        y_encoded = processing.encode_label(y)
+        y_pred = processing.encode_label(y_encoded)
+        return testing.accuracy(y, y_pred)

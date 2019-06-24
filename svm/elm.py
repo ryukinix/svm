@@ -30,6 +30,8 @@ q = 20 -> 0.97 acc (sorte do cassete)
 import numpy as np
 from matplotlib import pyplot as plt
 import processing
+from sklearn.base import ClassifierMixin
+import testing
 
 
 def train(X, y, q=10, activation=None):
@@ -91,7 +93,7 @@ def predict(X, W, M, activation=None):
     return Y.T
 
 
-class ELM(object):
+class ELM(ClassifierMixin):
 
     def __init__(self, q=10, activation=processing.sigmoid):
         self.activation = activation
@@ -105,3 +107,8 @@ class ELM(object):
     def predict(self, X):
         y_pred = predict(X, self.W, self.M, activation=self.activation)
         return processing.encode_label(y_pred)
+
+    def score(self, X, y):
+        y_encoded = processing.encode_label(y)
+        y_pred = processing.encode_label(y_encoded)
+        return testing.accuracy(y, y_pred)
